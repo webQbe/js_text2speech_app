@@ -53,12 +53,6 @@ if(synth.onvoiceschanged !== undefined){
 // SPEAK
 const speak = () => {
 
-    // Add background animation
-    body.style.background = '#141414 url(img/wave.gif)';
-    body.style.backgroundRepeat = 'repeat-x'; // repeat only horizontally
-    body.style.backgroundSize = '100% 100%'; // cover everything
-
-
     // Check if speaking
     if(synth.speaking){
 
@@ -68,6 +62,11 @@ const speak = () => {
     }
 
     if(textInput !== ''){
+
+        // Add background animation
+        body.style.background = '#141414 url(img/wave.gif)';
+        body.style.backgroundRepeat = 'repeat-x'; // repeat only horizontally
+        body.style.backgroundSize = '100% 100%'; // cover everything
 
         // Pass text for reading : textInput.value
         // Get speech response back to variable: speakText
