@@ -9,6 +9,7 @@ const rate = document.querySelector('#rate');
 const rateValue = document.querySelector('#rate-value');
 const pitch = document.querySelector('#pitch');
 const pitchValue = document.querySelector('#pitch-value');
+const body = document.querySelector('body');
 
 // Initialize Voices Array
 let voices = [];
@@ -51,6 +52,12 @@ if(synth.onvoiceschanged !== undefined){
 
 // SPEAK
 const speak = () => {
+
+    // Add background animation
+    body.style.background = '#141414 url(img/wave.gif)';
+    body.style.backgroundRepeat = 'repeat-x'; // repeat only horizontally
+    body.style.backgroundSize = '100% 100%'; // cover everything
+
 
     // Check if speaking
     if(synth.speaking){
