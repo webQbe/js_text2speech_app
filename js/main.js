@@ -13,7 +13,9 @@ const pitchValue = document.querySelector('#pitch-value');
 // Initialize Voices Array
 let voices = [];
 
-// 
+
+
+// ADD VOICES TO SELECT LIST
 const getVoices = () => {
 
     // add voices from API to voices array
@@ -45,3 +47,88 @@ getVoices();
 if(synth.onvoiceschanged !== undefined){
     synth.onvoiceschanged = getVoices;
 }
+
+
+// SPEAK
+const speak = () => {
+
+    // Check if speaking
+    if(synth.speaking){
+
+        console.error('Already Speaking...');
+        return;
+
+    }
+
+    if(textInput !== ''){
+
+        // Pass text for reading : textInput.value
+        // Get speech response back to variable: speakText
+        const speakText = new SpeechSynthesisUtterance(textInput.value);
+
+        // Run when reading is finished
+        speakText.onend = e => {
+
+            console.log('Done speaking...');
+
+        }
+
+        // Read error
+        speakText.onerror = e => {
+
+            console.error('Something went wrong');
+
+        } 
+
+        // Get Selected voice from select list
+        const selectedVoice = voiceSelect.selectedOptions[0].getAttribute('data-name');
+
+        // Loop through voices
+        voices.forEach(voice => {
+
+            // if current voice matches selectedVoice
+            if(voice.name === selectedVoice){
+
+                speakText.voice = voice
+
+            }
+        });
+
+        // Set pitch and rate
+        speakText.rate = rate.value;    
+        speakText.pitch = pitch.value;
+
+        // Read
+        synth.speak(speakText);
+
+    }
+
+};
+
+
+// EVENT LISTENERS
+
+// On Submit button click
+textForm.addEventListener('submit', e => {
+
+    e.preventDefault(); // prevent submission
+    speak(); // call speak function
+    textInput.blur();
+
+});
+
+// On Rate Value Change
+// Update #rateValue element text
+rate.addEventListener('change', e => rateValue.textContent = rate.value)
+
+// On Pitch Value Change
+// Update #pitchValue element text
+pitch.addEventListener('change', e => pitchValue.textContent = pitch.value)
+
+
+
+
+// READING STARTS WHEN VOICE IS SELECTED (NO BUTTON CLICK NEEDED)
+
+voiceSelect.addEventListener('change', e => speak());
+
