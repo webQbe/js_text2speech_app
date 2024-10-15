@@ -1,4 +1,4 @@
-# JavaScript Text-To-Speech Synthesis
+# JavaScript Text-To-Speech Synthesis App
 
 - No 3rd-Party Libraries used
 - Browser-based Web Speech API is used
