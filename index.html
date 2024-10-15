@@ -25,16 +25,27 @@
                     <div class="form-group">
                         <textarea class="form-control form-control-lg" placeholder="Type anything..." id="text-input"></textarea>
                     </div>
-                    <div class="form-group">
 
+                    <!-- ADJUST SPEED -->
+                    <div class="form-group">
                         <label for="rate">Rate</label>
 
                         <!-- DISPLAY RATE VALUE -->
                         <div id="rate-value" class="badge badge-primary float-right">1</div>
 
-                        <!-- VOICE SPEED RANGE INPUT -->
+                        <!-- SELECT SPEED -->
                         <input type="range" class="custom-range" id="rate" min="0.5" max="2" value="1" step="0.1">
+                    </div>
 
+                   <!-- ADJUST PITCH -->
+                   <div class="form-group">
+                        <label for="rate">Pitch</label>
+                        
+                        <!-- DISPLAY PITCH VALUE -->
+                        <div id="pitch-value" class="badge badge-primary float-right">1</div>
+                        
+                        <!-- SELECT PITCH LEVEL -->
+                        <input type="range" class="custom-range" id="rate" min="0" max="2" value="1" step="0.1">
                     </div>
                 </form>
 
