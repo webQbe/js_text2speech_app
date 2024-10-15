@@ -19,8 +19,23 @@ const getVoices = () => {
     // add voices from API to voices array
     voices = synth.getVoices();
 
-    // log voice list
-    console.log(voices);
+    // loop through voices and create an option for each one
+    voices.forEach(voice => {
+
+        // create <option> element
+        const option =  document.createElement('option');
+
+        // fill <option> with voice & language
+        option.textContent = voice.name + '('+ voice.lang +')';
+
+        // set <option> attributes
+        option.setAttribute('data-lang', voice.lang);
+        option.setAttribute('data-name', voice.name);
+
+        // append <option> to <select> list
+        voiceSelect.appendChild(option);
+
+    });
 
 }  
 
