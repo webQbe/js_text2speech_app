@@ -63,7 +63,7 @@ const speak = () => {
 
     if(textInput !== ''){
 
-        // Add background animation
+        // Start background animation
         body.style.background = '#141414 url(img/wave.gif)';
         body.style.backgroundRepeat = 'repeat-x'; // repeat only horizontally
         body.style.backgroundSize = '100% 100%'; // cover everything
@@ -76,6 +76,9 @@ const speak = () => {
         speakText.onend = e => {
 
             console.log('Done speaking...');
+            
+            // End background animation
+            body.style.background = '#141414';
 
         }
 
